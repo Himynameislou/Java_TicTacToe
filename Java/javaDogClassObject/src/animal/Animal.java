@@ -1,10 +1,11 @@
 package animal;
 
-public class Animal {
+public abstract class Animal {
     //    Declare Fields
     private String breed;
     private int lifespan;
     private String behavior;
+    private static String seller;
 
     public Animal(String breed, int lifespan, String behavior, double price) {
         this.breed = breed;
@@ -14,6 +15,15 @@ public class Animal {
     }
 
     //Declaring getters & setters
+
+    public static String getSeller() {
+        return seller;
+    }
+
+    public static void setSeller(String seller) {
+        Animal.seller = seller;
+    }
+
     public String getBreed() {
         return breed;
     }

@@ -1,5 +1,6 @@
 package main;
 
+import animal.Animal;
 import animal.Cat;
 import animal.Dog;
 public class Main {
@@ -60,6 +61,24 @@ public class Main {
          */
         Dog dog = new Dog("Pug", 13, "Hungry", 300);
         Cat cat = new Cat("Tabby", 20, "Angry", 2);
+
+        //Casting
+        Animal dog2 = new Dog("Bulldog",23,"Alert",400);
+        System.out.println(((Dog)dog2).getSound());
+
+        //Instance of
+
+        if (dog instanceof Dog)
+            System.out.println("Dog is dog");
+        if (cat instanceof Cat)
+            System.out.println("Cat is cat");
+        if (dog2 instanceof Dog)
+            System.out.println("d2 is Dog");
+
+         //Using static members
+        Animal.setSeller("Petco");
+        System.out.println(Animal.getSeller());
+
 
 //        dog.setBreed("Pug");
 //        cat.setBreed("Tabby");
