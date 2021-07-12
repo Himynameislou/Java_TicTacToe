@@ -4,14 +4,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainMenuController">
    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="320.0" spacing="10.0">
          <children>
-            <Button maxWidth="67.0" mnemonicParsing="false" text="CREATE" />
-            <Button mnemonicParsing="false" text="DISPLAY" />
-            <Button maxWidth="67.0" mnemonicParsing="false" text="EXIT" />
+            <Button maxWidth="67.0" mnemonicParsing="false" onAction="#onActionCreateAnimal" text="CREATE" />
+            <Button mnemonicParsing="false" onAction="#onActionDisplayAnimals" text="DISPLAY" />
+            <Button maxWidth="67.0" mnemonicParsing="false" onAction="#onActionExit" text="EXIT" />
          </children>
       </VBox>
    </children>
