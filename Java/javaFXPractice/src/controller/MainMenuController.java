@@ -1,29 +1,43 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
+import javafx.scene.Parent;
 
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
+import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
+    Stage stage;
+    Parent scene;
 
     @FXML
-    void onActionCreateAnimal(ActionEvent event) {
-        System.out.println("Create button clicked");
+    void onActionCreateAnimal(ActionEvent event) throws IOException {
+        stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/view/CreateAnimalMenu.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
     }
 
     @FXML
-    void onActionDisplayAnimals(ActionEvent event) {
-        System.out.println("Display button clicked");
-
+    void onActionDisplayAnimals(ActionEvent event) throws IOException {
+        stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/view/DisplayAnimalMenu.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
     }
 
     @FXML
-    void onActionExit(ActionEvent event) {
-        System.out.println("Exit button clicked");
-
+    void onActionExit(ActionEvent event) throws IOException {
+        System.exit(0);
     }
 
     @Override

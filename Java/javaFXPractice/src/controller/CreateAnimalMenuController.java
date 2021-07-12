@@ -1,15 +1,23 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CreateAnimalMenuController implements Initializable {
+    Stage stage;
+    Parent scene;
 
     @FXML
     private TextField animalIDTxt;
@@ -33,8 +41,11 @@ public class CreateAnimalMenuController implements Initializable {
     private RadioButton vaccNoRBtn;
 
     @FXML
-    void onActionDisplayMainMenu(ActionEvent event) {
-
+    void onActionDisplayMainMenu(ActionEvent event) throws IOException {
+        stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/view/MainMenu.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
     }
 
     @FXML
