@@ -52,13 +52,33 @@ public class DisplayAnimalMenuController implements Initializable {
         stage.show();
     }
 
+    //method to be able to search through animal array list in UI
+    public boolean search(int id)
+    {
+        for(Animal dog : DataProvider.getAllAnimals())
+        {
+            if(dog.getId() == id)
+                return true;
+        }
+        return false;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //Setting cell values in TableView
+        //Letting table knoew where it's data is coming from
         animalTableView.setItems(DataProvider.getAllAnimals());
+        //Setting columns and rows to data
         animalIDCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         breedCol.setCellValueFactory(new PropertyValueFactory<>("breed"));
         lifespanCol.setCellValueFactory(new PropertyValueFactory<>("lifespan"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+
+        //testing to see if search method works
+        if(search(7))
+            System.out.println("Found");
+        else
+            System.out.println("Not found");
     }
 }

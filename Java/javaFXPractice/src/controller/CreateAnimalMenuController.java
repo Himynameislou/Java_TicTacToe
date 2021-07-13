@@ -10,6 +10,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import model.DataProvider;
+import model.Dog;
 
 import java.io.IOException;
 import java.net.URL;
@@ -49,8 +51,26 @@ public class CreateAnimalMenuController implements Initializable {
     }
 
     @FXML
-    void onActionSaveAnimal(ActionEvent event) {
+    void onActionSaveAnimal(ActionEvent event) throws IOException {
+        int id = Integer.parseInt(animalIDTxt.getText());
+        String breed = breedTxt.getText();
+        int lifespan = Integer.parseInt(lifespanTxt.getText());
+        String behavior = behaviorTxt.getText();
+        double price =  Double.parseDouble(priceTxt.getText());
+        boolean isVaccinated;
+        String special = null;
 
+        if(vaccYesRBtn.isSelected())
+            isVaccinated = true;
+        else
+            isVaccinated = false;
+
+        DataProvider.addAnimal(new Dog(id, breed, lifespan, behavior, price, isVaccinated, special));
+
+        stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/view/MainMenu.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
     }
 
     @Override
