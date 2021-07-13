@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -97,11 +98,47 @@ public class DisplayAnimalMenuController implements Initializable {
             return false;
     }
 
+    //Defining Select method; will select a row in table view
+    public Animal selectAnimal(int id)
+    {
+        for(Animal dog : DataProvider.getAllAnimals())
+        {
+            if(dog.getId() == id)
+                return dog;
+        }
+        return null;
+    }
+
+    //Defining method for filtering Animal Objects using the 2nd Observable list we created for this very reason
+    public ObservableList<Animal> filter(String breed)
+    {
+        //This code clears out the getFilteredAnimals list if its not empty
+        if(!(DataProvider.getFilteredAnimals().isEmpty()))
+            DataProvider.getFilteredAnimals().clear();
+
+        for(Animal dog : DataProvider.getAllAnimals())
+        {
+            if(dog.getBreed().contains(breed))
+                DataProvider.getFilteredAnimals().add(dog);
+        }
+
+        //If a breed is searched that doesnt exist in the filtered list then it will return the original list back
+        if(DataProvider.getFilteredAnimals().isEmpty())
+            return DataProvider.getAllAnimals();
+        else
+            return DataProvider.getFilteredAnimals();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         //Setting cell values in TableView
         //Letting table know where it's data is coming from
-        animalTableView.setItems(DataProvider.getAllAnimals());
+        //animalTableView.setItems(DataProvider.getAllAnimals());
+        animalTableView.setItems(filter("X"));
+
+
+
         //Setting columns and rows to data
         animalIDCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         breedCol.setCellValueFactory(new PropertyValueFactory<>("breed"));
@@ -130,5 +167,11 @@ public class DisplayAnimalMenuController implements Initializable {
         else
             System.out.println("Delete Failed");
          */
+
+        //testing select animal method for single row highight
+        //animalTableView.getSelectionModel().select(selectAnimal(6));
+
+        //testing filter
+       // filter()
     }
 }

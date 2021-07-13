@@ -4,7 +4,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class DataProvider {
+
+    //Observable List for Animal Objects
     private static ObservableList<Animal> allAnimals = FXCollections.observableArrayList();
+
+    //Observable list for FILTERED Animal Objects
+    private static ObservableList<Animal> filteredAnimals = FXCollections.observableArrayList();
 
     public static void addAnimal(Animal animal)
     {
@@ -14,5 +19,9 @@ public class DataProvider {
     public static ObservableList<Animal> getAllAnimals()
     {
         return allAnimals;
+    }
+
+    public static ObservableList<Animal> getFilteredAnimals() {
+        return filteredAnimals;
     }
 }

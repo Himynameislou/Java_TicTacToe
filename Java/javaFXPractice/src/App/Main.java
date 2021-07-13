@@ -23,7 +23,7 @@ public class Main extends Application {
     {
         //Pre-populated Dog data for initial TableView
         Dog dog1 = new Dog(1, "Siberian Husky", 15, "Crafty", 599., true, "Whistles");
-        Dog dog2 = new Dog(2, "Pug", 5, "Boring", 99., true, "Sleeps");
+        Dog dog2 = new Dog(2, "Sug", 5, "Boring", 99., true, "Sleeps");
         Dog dog3 = new Dog(3, "Dalmation", 14, "Energetic", 399., true, "Climbs");
         Dog dog4 = new Dog(4, "Basset Hound", 12, "Lethargic", 6996., true, "Food Ninja");
         Dog dog5 = new Dog(5, "Mut", 22, "Loyal", 20., true, "Great friend");
