@@ -67,6 +67,7 @@ public class CreateAnimalMenuController implements Initializable {
 
         DataProvider.addAnimal(new Dog(id, breed, lifespan, behavior, price, isVaccinated, special));
 
+        //This let you exit out of the Add - i think. Reloads tableview.
         stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
         scene = FXMLLoader.load(getClass().getResource("/view/MainMenu.fxml"));
         stage.setScene(new Scene(scene));
