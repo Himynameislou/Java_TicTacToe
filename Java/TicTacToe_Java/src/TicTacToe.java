@@ -33,8 +33,20 @@ public class TicTacToe implements ActionListener {
         title_panel.setLayout(new BorderLayout());
         title_panel.setBounds(0,0,800,100);
 
+        button_panel.setLayout(new GridLayout(3,3));
+        button_panel.setBackground(new Color(150,150,150));
+
+        for(int i = 0; i < 9; i++){
+            buttons[i] = new JButton();
+            button_panel.add(buttons[i]);
+            buttons[i].setFont(new Font("MV Boli", Font.BOLD,120));
+            buttons[i].setFocusable(false);
+            buttons[i].addActionListener(this);
+        }
+
         title_panel.add(textF);
-        frame.add(title_panel);
+        frame.add(title_panel,BorderLayout.NORTH);
+        frame.add(button_panel);
     }
 
     //Randomly assigns first turn to user
