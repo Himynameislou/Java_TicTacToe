@@ -69,6 +69,9 @@ public class TicTacToe implements ActionListener {
 
     //Checks for winning conditions
     public void check(){
+        // check X win conditions
+
+        //check O win conditions
 
     }
 
