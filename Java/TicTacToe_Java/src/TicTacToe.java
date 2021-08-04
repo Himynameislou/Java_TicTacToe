@@ -47,11 +47,24 @@ public class TicTacToe implements ActionListener {
         title_panel.add(textF);
         frame.add(title_panel,BorderLayout.NORTH);
         frame.add(button_panel);
+
+        firstTurn();
     }
 
     //Randomly assigns first turn to user
     public void firstTurn(){
-
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (random.nextInt(2) == 0){
+            player1_turn = true;
+            textF.setText("X Turn");
+        } else {
+            player1_turn = false;
+            textF.setText("O Turn");
+        }
     }
 
     //Checks for winning conditions
@@ -71,6 +84,26 @@ public class TicTacToe implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        for (int i=0; i<9; i++){
+            if (e.getSource()==buttons[i]){
+                if (player1_turn){
+                    if(buttons[i].getText()==""){
+                        buttons[i].setForeground(new Color(255,0,0));
+                        buttons[i].setText("X");
+                        player1_turn = false;
+                        textF.setText("O Turn");
+                        check();
+                    }
+                } else {
+                    if(buttons[i].getText()==""){
+                        buttons[i].setForeground(new Color(0,0,255));
+                        buttons[i].setText("O");
+                        player1_turn = true;
+                        textF.setText("X Turn");
+                        check();
+                    }
+                }
+            }
+        }
     }
 }
